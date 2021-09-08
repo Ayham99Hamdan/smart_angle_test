@@ -24,6 +24,6 @@ class CustomerController extends Controller
         $customer = User::create($request->all());
 
         $token = $customer->createToken('customer' . $customer->id)->accessToken;
-        return $this->apiResponse([new CustomerResource($customer) , 'token' => $token->token],HTTPCodesEnum::STATUS_CREATED,"response successfully");
+        return $this->apiResponse(['user' => new CustomerResource($customer) , 'token' => $token],HTTPCodesEnum::STATUS_CREATED,"response successfully");
     }
 }
