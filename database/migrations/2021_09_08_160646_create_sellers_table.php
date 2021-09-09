@@ -14,7 +14,7 @@ class CreateSellersTable extends Migration
     public function up()
     {
         Schema::create('sellers', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('user_id')->constrained('users' , 'id')->index();
             $table->timestamps();
         });
     }

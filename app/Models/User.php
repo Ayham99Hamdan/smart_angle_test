@@ -24,4 +24,16 @@ class User extends Authenticatable
     public function getFullNameAttribute(){
         return $this->first_name . " " . $this->last_name;
     }
+    // Relation with Customer Table
+    public function customer(){
+        return $this->hasOne(Customer::class , 'user_id');
+    }
+    // Relation with Seller Table
+    public function seller(){
+        return $this->hasOne(Seller::class , 'user_id');
+    }
+    //Relation with Admin Table
+    public function admin(){
+        return $this->hasOne(Admin::class, 'user_id');
+    }
 }
