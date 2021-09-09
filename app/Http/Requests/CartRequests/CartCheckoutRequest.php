@@ -4,7 +4,7 @@ namespace App\Http\Requests\CartRequests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CartDeleteRequest extends FormRequest
+class CartCheckoutRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class CartDeleteRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class CartDeleteRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'paid_amount' => 'required|numeric|min:1'
         ];
     }
 }

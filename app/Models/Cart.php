@@ -15,11 +15,17 @@ class Cart extends Model
         'quantity'
     ];
 
+    protected $appends = ['value'];
+
     public function customers(){
-        return $this->hasMany(Customer::class, 'customer_id' , 'user_id');
+        return $this->hasMany(Customer::class, 'user_id' , 'customer_id');
     }
 
     public function products(){
-        return $this->hasMany(Product::class, 'porduct_id' , 'id');
+        return $this->hasMany(Product::class, 'id' , 'product_id');
+    }
+
+    public function getValueAttribute(){
+        return $this->quantity * $this->products->first()->price;
     }
 }

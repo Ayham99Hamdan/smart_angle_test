@@ -25,6 +25,7 @@ class CartAddRequest extends FormRequest
     {
         return [
             'product_id' => 'required|exists:products,id',
+            'quantity' => 'required|numeric|min:1'
         ];
     }
 }
