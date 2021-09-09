@@ -11,8 +11,12 @@ class Seller extends Model
     protected $primaryKey = 'user_id';
 
     protected $fillabel = ['user_id'];
-    
+
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function products(){
+        return $this->hasMany(Product::class, 'seller_id' , 'user_id');
     }
 }
